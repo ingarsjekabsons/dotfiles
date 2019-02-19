@@ -1,8 +1,11 @@
-" we want to see errors in preview window
-let g:ale_cursor_detail = 1
+set shell=/bin/bash
+nnoremap <F8> :TagbarToggle<cr>
 
 " we want preview window to close on enabling insert mode
 let g:ale_close_preview_on_insert = 1
+
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_open_list = 1
 
 execute pathogen#infect()
 
@@ -56,7 +59,7 @@ let g:ale_haskell_hie_executable = 'hie-wrapper'
 
 " turn HIE on
 let g:ale_linters = {'haskell': ['hie'],
-\                    'cpp': ['gcc','cppcheck'],
+\                    'cpp': ['clangd'],
 \                   }
 
 " we want ALE linter warnings in status line
