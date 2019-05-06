@@ -2,6 +2,8 @@ set completeopt+=noinsert
 set expandtab
 set tabstop=4
 set shiftwidth=4
+colorscheme desert
+set background=light
 
 " we want preview window to close on enabling insert mode
 let g:ale_close_preview_on_insert = 1
@@ -14,9 +16,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'drmingdrmer/vim-tabbar'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
+Plug 'LnL7/vim-nix'
 call plug#end()
-
-colorscheme desert
 
 let g:ale_linters_explicit = 1
 let g:ale_haskell_hie_executable = 'hie-wrapper'
@@ -29,6 +30,7 @@ let g:ale_linters = {'haskell': ['hie', 'hlint'],
 nnoremap <leader>t :ALEHover<cr>
 nnoremap <leader>r :ALEFindReferences<cr>
 nnoremap <leader>d :ALEGoToTypeDefinition<cr>
+nnoremap <leader>s :ALEDetail<cr>
 
 " cycle through buffers
 noremap <C-h> :bprev<cr>
@@ -37,7 +39,7 @@ noremap <C-l> :bnext<cr>
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 1
-let g:ale_set_loclist = 1
+let g:ale_set_loclist = 0
 
 let g:ale_set_quickfix = 0
 let g:ale_completion_enabled = 1
