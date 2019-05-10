@@ -1,12 +1,13 @@
 with import <nixpkgs> {};
 stdenv.mkDerivation {
   name = "dev-env";
-  buildInputs = [ 
+  buildInputs = [
     gcc
     neovim
     python3
-    haskell.compiler.ghc863Binary
+    haskell.compiler.ghc864
     haskellPackages.cabal-install
+    oracle-instantclient
   ];
   shellHook = ''
     alias vim='nvim'
