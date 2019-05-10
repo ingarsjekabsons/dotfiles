@@ -14,12 +14,14 @@ Plug 'w0rp/ale'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'drmingdrmer/vim-tabbar'
+Plug 'majutsushi/tagbar'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
 Plug 'LnL7/vim-nix'
 call plug#end()
 
 let g:ale_linters_explicit = 1
+let g:ale_fixers_explicit = 1
 let g:ale_haskell_hie_executable = 'hie-wrapper'
 
 " turn HIE on
@@ -27,19 +29,27 @@ let g:ale_linters = {'haskell': ['hie', 'hlint'],
 \                    'cpp': ['clangd'],
 \                   }
 
+let g:ale_fixers = {'haskell': ['hlint']}
+
 nnoremap <leader>t :ALEHover<cr>
 nnoremap <leader>r :ALEFindReferences<cr>
 nnoremap <leader>d :ALEGoToTypeDefinition<cr>
 nnoremap <leader>s :ALEDetail<cr>
 
+nmap <F8> :TagbarToggle<CR>
+
 " cycle through buffers
 noremap <C-h> :bprev<cr>
 noremap <C-l> :bnext<cr>
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_open_list = 1
 let g:ale_set_loclist = 0
+let g:ale_lint_delay = 20000
 
 let g:ale_set_quickfix = 0
 let g:ale_completion_enabled = 1
